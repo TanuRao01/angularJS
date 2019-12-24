@@ -1,0 +1,27 @@
+<form role="form" name="loginForm" class="well" ng-hide="ifSearchUser">
+    <div class="form-group">
+        <label for="name"> Name: </label>
+        <input type="text" id="name" class="form-control" placeholder="Enter Name " ng-model="newcontact.name">
+    </div>
+    <div class="form-group">
+        <label for="password"> Password: </label>
+        <input type="password" id="password" class="form-control" placeholder="Enter Password " ng-model="newcontact.password">
+    </div>
+    <div class="form-group">
+        <label for="phone"> Phone: </label>
+        <input type="text" id="phone" class="form-control" placeholder="Enter Phone " ng-model="newcontact.phone">
+    </div>
+    <div class="form-group">
+        <label for="email"> Email: </label>
+        <input type="email" id="email" class="form-control" placeholder="Enter Email " ng-model="newcontact.email">
+    </div>
+
+    <div class="form-group">
+        <label for="referral_code"> Referral Code: </label>
+        <input type="email" id="refCode" class="form-control" placeholder="Enter Referral Code " ng-model="newcontact.refCode">
+    </div>
+    <br>
+    
+    <input type="button" class="btn btn-primary" ng-click="saveContact(loginForm)" class="btn btn-primary" value="Submit">
+</form>
+<button ng-click="gotoRegisterPage()">Register</button>

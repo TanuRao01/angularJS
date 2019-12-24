@@ -1,0 +1,61 @@
+<div class="container" style="width:600px">
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <h3>AngularJS Form Validation using ngMessages</h3>
+    </div>
+    <!-- pass in the variable if our form is valid or invalid -->
+    <form name="registerForm" novalidate>
+        <!-- <div ng-messages="<formName>.<inputName>.$error">
+    <p ng-message="<validationName>">Your message here.</p>
+</div>
+ -->
+        <div class="form-group" ng-class="{ 'has-error' : 
+             registerForm.myName.$touched && registerForm.myName.$invalid }">
+            <label>Name</label>
+            <input type="text" name="myName" class="form-control" ng-model="nameForm" ng-minlength="3" ng-maxlength="8" required>
+            <div class="help-block" ng-messages="registerForm.myName.$error" ng-if="registerForm.myName.$touched">
+                <p ng-message="required">Your name is required.</p>
+                <p ng-message="minlength">Your name is too short.</p>
+                <p ng-message="maxlength">Your name is too long.</p>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : 
+             registerForm.password.$touched && registerForm.password.$invalid }">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" ng-model="passwordForm" ng-minlength="6" ng-maxlength="8" required>
+            <div class="help-block" ng-messages="registerForm.password.$error" ng-if="registerForm.password.$touched">
+                <!-- <div ng-messages-include="pages/messages.html"></div> -->
+                <p ng-message="minlength">Your Password is too short.</p>
+                <p ng-message="maxlength">Your Password is too long.</p>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : (registerForm.phone.$invalid &&  registerForm.phone.$touched)}">
+            <label for="inputPhone">Phone Number</label>
+            <input type="number" class="form-control" ng-pattern="/^[0-9]{10}$/" id="inputPhone" name="phone" placeholder="Phone" ng-model="phoneForm" ng-maxlength="10" ng-required="true">
+            <div class="help-block" ng-messages="registerForm.phone.$error">
+                <p ng-message="required">Phone number is required.</p>
+                <p ng-message="pattern">Phone number is invalid.</p>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : 
+                  registerForm.userName.$touched && registerForm.userName.$invalid }">
+            <label>Email</label>
+            <input type="email" name="userName" class="form-control" ng-model="userNameEmail" required>
+            <div class="help-block" ng-messages="registerForm.userName.$error" ng-if="registerForm.userName.$touched">
+                <p ng-message="email">Please enter a valid email.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Referal Code</label>
+            <input type="text" name="referalCode" class="form-control" ng-model="referalCode" ng-minlength="6" ng-maxlength="6" required>
+            <div class="help-block" ng-messages="registerForm.referalCode.$error" ng-if="registerForm.referalCode.$touched">
+                <!-- <p ng-message="required">Your name is required.</p> -->
+                <p ng-message="minlength">Minlength is 6</p>
+                <p ng-message="maxlength">Maxlength is 6</p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" ng-click="registerUser()" ng-disabled="registerForm.$invalid">
+            Submit
+        </button>
+    </form>
+</div>
